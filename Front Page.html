@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer Chess Game</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #ddd;
+        }
+        header {
+            background: #1f1f1f;
+            color: #ffcc00;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0px 4px 8px rgba(255, 204, 0, 0.5);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #222;
+            padding: 10px;
+        }
+        nav a {
+            color: #ffcc00;
+            text-decoration: none;
+            padding: 12px 20px;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #ff9900;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background: #1c1c1c;
+            color: white;
+        }
+        .hero button {
+            background: #ffcc00;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: black;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ffcc00;
+            transition: 0.3s;
+        }
+        .hero button:hover {
+            background: #ff9900;
+            box-shadow: 0 0 15px #ff9900;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 30px;
+            background: #1c1c1c;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.3);
+            margin-top: 20px;
+        }
+        h2 {
+            color: #ffcc00;
+            border-bottom: 2px solid #ffcc00;
+            padding-bottom: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #1f1f1f;
+            color: #ffcc00;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>Multiplayer Chess Game</header>
+    
+    <nav>
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#modes">Game Modes</a>
+        <a href="Leaderboard.html">Leaderboard</a>
+        <a href="#play">Play Now</a>
+    </nav>
+
+    <div class="hero">
+        <h1>Play Chess Online with Friends</h1>
+        <p>Challenge players worldwide or test your skills against AI!</p>
+        <button onclick="window.location.href='#play'">Start Playing</button>
+    </div>
+
+    <div class="container">
+        <section id="about">
+            <h2>About the Game</h2>
+            <p>This multiplayer chess game allows you to play real-time chess matches online with friends or AI.</p>
+        </section>
+
+        <section id="modes">
+            <h2>Game Modes</h2>
+            <ul>
+                <li>1v1 Online Multiplayer</li>
+                <li>AI Mode - Play against different difficulty levels</li>
+                <li>Local Mode - Play on the same device</li>
+            </ul>
+        </section>
+
+        <section id="play">
+            <h2>Start Playing</h2>
+            <button onclick="window.location.href='game.html'">Play Now</button>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2025 Multiplayer Chess Game. All rights reserved.
+    </footer>
+</body>
+</html>
