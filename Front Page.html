@@ -78,6 +78,33 @@
             border-bottom: 2px solid #ffcc00;
             padding-bottom: 5px;
         }
+        .play-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .play-button {
+            background: linear-gradient(45deg, #ffcc00, #ff9900);
+            border: none;
+            padding: 18px 35px;
+            font-size: 20px;
+            color: #121212;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
+            transition: all 0.3s ease-in-out;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .play-button:hover {
+            background: linear-gradient(45deg, #ff9900, #ff6600);
+            box-shadow: 0 0 20px rgba(255, 153, 0, 1);
+            transform: translateY(-3px);
+        }
+        .play-button:active {
+            transform: scale(0.98);
+            box-shadow: 0 0 10px rgba(255, 153, 0, 0.7);
+        }
         footer {
             text-align: center;
             padding: 10px;
@@ -119,9 +146,9 @@
             </ul>
         </section>
 
-        <section id="play">
+        <section id="play" class="play-section">
             <h2>Start Playing</h2>
-            <button onclick="window.location.href='game.html'">Play Now</button>
+            <button class="play-button" onclick="window.location.href='game.html'">Play Now</button>
         </section>
     </div>
 
