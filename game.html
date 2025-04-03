@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play HectoClash - Math Battle</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #ddd;
+            text-align: center;
+        }
+        header {
+            background: #1f1f1f;
+            color: #ffcc00;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0px 4px 8px rgba(255, 204, 0, 0.5);
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            background: #1c1c1c;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.3);
+            margin-top: 20px;
+        }
+        h2 {
+            color: #ffcc00;
+            border-bottom: 2px solid #ffcc00;
+            padding-bottom: 5px;
+        }
+        .game-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            background: #2a2a2a;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.3);
+            margin-top: 20px;
+            color: #ffcc00;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .game-button, .submit-button {
+            background: linear-gradient(45deg, #ffcc00, #ff9900);
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #121212;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
+            transition: all 0.3s ease-in-out;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 10px;
+        }
+        .game-button:hover, .submit-button:hover {
+            background: linear-gradient(45deg, #ff9900, #ff6600);
+            box-shadow: 0 0 20px rgba(255, 153, 0, 1);
+            transform: translateY(-3px);
+        }
+        .game-button:active, .submit-button:active {
+            transform: scale(0.98);
+            box-shadow: 0 0 10px rgba(255, 153, 0, 0.7);
+        }
+        .answer-input {
+            width: 80%;
+            max-width: 400px;
+            padding: 12px;
+            margin-top: 15px;
+            border: 2px solid #ffcc00;
+            border-radius: 8px;
+            font-size: 18px;
+            text-align: center;
+            background: #2a2a2a;
+            color: #ffcc00;
+            outline: none;
+        }
+        .back-btn {
+            margin-top: 20px;
+        }
+        .back-btn a {
+            display: inline-block;
+            background: #ffcc00;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            color: black;
+            transition: 0.3s;
+        }
+        .back-btn a:hover {
+            background: #ff9900;
+        }
+    </style>
+</head>
+<body>
+    <header>Play HectoClash - The Ultimate Math Battle</header>
+    
+    <div class="container">
+        <h2>Equation Arena</h2>
+        <div class="game-area" id="game-area">
+            Solve the Clash!
+        </div>
+
+        <div class="button-container">
+            <button class="game-button" onclick="generateProblem()">Generate Equation</button>
+        </div>
+
+        <input type="text" id="answer" class="answer-input" placeholder="Enter your answer here">
+        
+        <div class="button-container">
+            <button class="submit-button" onclick="checkAnswer()">Submit</button>
+        </div>
+
+        <div class="back-btn">
+            <a href="Front Page.html">Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        let currentProblem = "";
+        let correctAnswer = 0;
+
+        function generateProblem() {
+            const problems = [
+                { problem: "5x + 3 = 18", answer: "3" },
+                { problem: "√x + 4 = 10", answer: "36" },
+                { problem: "2(x-3) = 16", answer: "11" },
+                { problem: "x² - 9 = 0", answer: "±3" },
+                { problem: "3x + 2y = 12 (x=2, solve for y)", answer: "3" }
+            ];
+            const randomIndex = Math.floor(Math.random() * problems.length);
+            currentProblem = problems[randomIndex].problem;
+            correctAnswer = problems[randomIndex].answer;
+            document.getElementById('game-area').innerHTML = "Solve: " + currentProblem;
+        }
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById('answer').value.trim();
+            if (userAnswer === correctAnswer) {
+                alert("✅ Correct! Great job!");
+            } else {
+                alert("❌ Incorrect! Try again.");
+            }
+        }
+    </script>
+</body>
+</html>
