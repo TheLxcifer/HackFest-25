@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play HectoClash - Math Battle</title>
+    <title>Play HectoClash - The Ultimate Math Battle</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
 
@@ -114,19 +114,19 @@
     <header>Play HectoClash - The Ultimate Math Battle</header>
     
     <div class="container">
-        <h2>Equation Arena</h2>
+        <h2>Use Numbers to Make 100!</h2>
         <div class="game-area" id="game-area">
-            Solve the Clash!
+            Click "Generate" to get numbers!
         </div>
 
         <div class="button-container">
-            <button class="game-button" onclick="generateProblem()">Generate Equation</button>
+            <button class="game-button" onclick="generateNumber()">Generate Numbers</button>
         </div>
 
-        <input type="text" id="answer" class="answer-input" placeholder="Enter your answer here">
+        <input type="text" id="equation" class="answer-input" placeholder="Enter equation to make 100">
         
         <div class="button-container">
-            <button class="submit-button" onclick="checkAnswer()">Submit</button>
+            <button class="submit-button" onclick="checkEquation()">Submit</button>
         </div>
 
         <div class="back-btn">
@@ -135,29 +135,54 @@
     </div>
 
     <script>
-        let currentProblem = "";
-        let correctAnswer = 0;
+        let generatedNumbers = [];
 
-        function generateProblem() {
-            const problems = [
-                { problem: "5x + 3 = 18", answer: "3" },
-                { problem: "√x + 4 = 10", answer: "36" },
-                { problem: "2(x-3) = 16", answer: "11" },
-                { problem: "x² - 9 = 0", answer: "±3" },
-                { problem: "3x + 2y = 12 (x=2, solve for y)", answer: "3" }
-            ];
-            const randomIndex = Math.floor(Math.random() * problems.length);
-            currentProblem = problems[randomIndex].problem;
-            correctAnswer = problems[randomIndex].answer;
-            document.getElementById('game-area').innerHTML = "Solve: " + currentProblem;
+        function generateNumber() {
+            let digits = "123456789";  // Excludes 0
+            generatedNumbers = [];
+            
+            for (let i = 0; i < 6; i++) {
+                generatedNumbers.push(digits.charAt(Math.floor(Math.random() * digits.length)));
+            }
+            
+            document.getElementById('game-area').innerHTML = "Numbers: " + generatedNumbers.join(" ");
         }
 
-        function checkAnswer() {
-            const userAnswer = document.getElementById('answer').value.trim();
-            if (userAnswer === correctAnswer) {
-                alert("✅ Correct! Great job!");
-            } else {
-                alert("❌ Incorrect! Try again.");
+        function checkEquation() {
+            let userEquation = document.getElementById('equation').value.trim();
+
+            // Allowed symbols
+            const allowedSymbols = /^[0-9+\-*/^() ]+$/;
+
+            if (!allowedSymbols.test(userEquation)) {
+                alert("⚠️ Invalid input! Only use numbers, +, -, *, /, ^, (, )");
+                return;
+            }
+
+            // Extract numbers from user input while keeping operators
+            let userNumbers = userEquation.replace(/[^0-9]/g, ' ').split(' ').filter(Boolean);
+            
+            // Ensure numbers appear in the same order as generated
+            let generatedString = generatedNumbers.join('');
+            let userString = userNumbers.join('');
+
+            if (!generatedString.includes(userString)) {
+                alert("⚠️ Numbers must be used in the same order as generated!");
+                return;
+            }
+
+            try {
+                // Convert '^' to '**' for JS evaluation
+                let evaluatedEquation = userEquation.replace(/\^/g, '**');
+                let result = eval(evaluatedEquation);
+
+                if (result === 100) {
+                    alert("✅ Correct! Your equation makes 100!");
+                } else {
+                    alert("❌ Incorrect! Your result is " + result);
+                }
+            } catch (e) {
+                alert("⚠️ Invalid equation! Please enter a valid mathematical expression.");
             }
         }
     </script>
